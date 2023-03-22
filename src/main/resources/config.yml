@@ -1,0 +1,39 @@
+allowBlockBreak:
+  toggle: true
+  bypassPermission: "lobbycfg.blockbreakbypass"
+  exceptions:
+    - AIR
+
+allowBlockPlace:
+  toggle: true
+  bypassPermission: "lobbycfg.blockplacebypass"
+  exceptions:
+    - AIR
+
+allowInteract:
+  toggle: true
+  bypassPermission: "lobbycfg.interactbypass"
+  exceptions:
+      - ITEM_FRAME
+
+allowPvp:
+  toggle: true
+  bypassPermission: "lobbycfg.pvpbypass"
+
+allowDamage:
+  toggle: true
+  bypassPermission: "lobbycfg.damagebypass"
+
+allowHunger:
+  toggle: true
+  bypassPermission: "lobbycfg.hungerbypass"
+
+playerMechanics:
+  defaultGamemode: adventure
+  spawnLocation: 0,81,0,90,0
+  spawnWorld: "world"
+  deathHeight: 30
+
+allowedWorlds:
+  - world
+  - spawn

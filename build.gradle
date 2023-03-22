@@ -1,5 +1,7 @@
 plugins {
     id 'java'
+    id 'org.jetbrains.kotlin.jvm' version '1.8.20-RC'
+    id("xyz.jpenilla.run-paper") version "2.0.1"
 }
 
 group = 'net.ocejlot.lobbycfg'
@@ -8,20 +10,38 @@ version = '0.1-LobbyCFG'
 repositories {
     mavenCentral()
     maven {
-        name = "papermc-repo"
-        url = "https://repo.papermc.io/repository/maven-public/"
+        name = 'papermc-repo'
+        url = 'https://repo.papermc.io/repository/maven-public/'
     }
     maven {
-        name = "sonatype"
-        url = "https://oss.sonatype.org/content/groups/public/"
+        name = 'sonatype'
+        url = 'https://oss.sonatype.org/content/groups/public/'
     }
 }
 
 dependencies {
-compileOnly "io.papermc.paper:paper-api:1.19.4-R0.1-SNAPSHOT"
+    compileOnly 'io.papermc.paper:paper-api:1.19.4-R0.1-SNAPSHOT'
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
 }
 
-def targetJavaVersion = 17
+compileKotlin {
+    kotlinOptions {
+        jvmTarget = "1.8"
+        freeCompilerArgs = ["-Xlambdas=indy"] // use LambdaMetafactory & invokedynamic for lambdas
+    }
+}
+
+jar {
+    from sourceSets.main.resources
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+    from configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = "UTF-8"
+}
+
+def targetJavaVersion = 19
 java {
     def javaVersion = JavaVersion.toVersion(targetJavaVersion)
     sourceCompatibility = javaVersion
@@ -43,5 +63,14 @@ processResources {
     filteringCharset 'UTF-8'
     filesMatching('plugin.yml') {
         expand props
+    }
+}
+
+runServer{
+    minecraftVersion("1.19.4")
+}
+compileTestKotlin {
+    kotlinOptions {
+        jvmTarget = "1.8"
     }
 }
