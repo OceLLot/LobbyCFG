@@ -29,9 +29,11 @@ allowHunger:
   bypassPermission: "lobbycfg.hungerbypass"
 
 playerMechanics:
-  defaultGamemode: adventure
+  defaultGameMode: adventure
+  # (x, y, z, yaw, pitch)
   spawnLocation: 0,81,0,90,0
-  spawnWorld: "world"
+
+  spawnWorld: world
   deathHeight: 30
 
 allowedWorlds:

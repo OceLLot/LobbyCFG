@@ -1,0 +1,4 @@
+name: LobbyCFG
+version: '${version}'
+main: net.ocejlot.lobbycfg.lobbycfg.LobbyCFG
+api-version: 1.19
