@@ -9,7 +9,7 @@ import org.bukkit.event.block.BlockPlaceEvent
 
 
 class BlockEvents(
-    private val config: Configuration
+    config: Configuration
 ): Listener{
 
     private val allowBlockBreak = config.getConfigurationSection("allowBlockBreak")
@@ -30,12 +30,12 @@ class BlockEvents(
         if(!breakAllowedWorlds.contains(player.world.name))return
 
         val block = event.block
-        if(!blockBreakingIsEnabled)return
+        if(blockBreakingIsEnabled)return
         if(player.hasPermission(blockBreakPerm!!))return
 
         val materialExceptions = arrayListOf<Material>()
-        breakExceptions.forEach{block->
-            val m = Material.getMaterial(block)
+        breakExceptions.forEach{
+            val m = Material.getMaterial(it)
             materialExceptions.add(m!!)
         }
         if(materialExceptions.contains(block.type))return
@@ -49,12 +49,12 @@ class BlockEvents(
         if(!placeAllowedWorlds.contains(player.world.name))return
 
         val block = event.block
-        if(!blockPlaceIsEnabled)return
+        if(blockPlaceIsEnabled)return
         if(player.hasPermission(blockPlacePerm!!))return
 
         val materialExceptions = arrayListOf<Material>()
-        placeExceptions.forEach{block->
-            val m = Material.getMaterial(block)
+        placeExceptions.forEach{
+            val m = Material.getMaterial(it)
             materialExceptions.add(m!!)
         }
         if(materialExceptions.contains(block.type))return

@@ -13,7 +13,6 @@ class LobbyCFG : JavaPlugin() {
 
     override fun onEnable() {
         registerEvents()
-        println(lobbyLocation())
         PlayerEvents(this.config, lobbyLocation()).playerFall(this)
     }
 

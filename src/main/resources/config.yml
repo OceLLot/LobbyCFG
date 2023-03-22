@@ -1,38 +1,37 @@
 allowBlockBreak:
-  toggle: true
+  toggle: false
   bypassPermission: "lobbycfg.blockbreakbypass"
   exceptions:
     - AIR
+    - REDSTONE_BLOCK
 
 allowBlockPlace:
-  toggle: true
+  toggle: false
   bypassPermission: "lobbycfg.blockplacebypass"
   exceptions:
     - AIR
+    - REDSTONE_BLOCK
 
 allowInteract:
-  toggle: true
+  toggle: false
   bypassPermission: "lobbycfg.interactbypass"
   exceptions:
       - ITEM_FRAME
 
 allowPvp:
-  toggle: true
+  toggle: false
   bypassPermission: "lobbycfg.pvpbypass"
 
 allowDamage:
   toggle: true
-  bypassPermission: "lobbycfg.damagebypass"
 
 allowHunger:
   toggle: true
-  bypassPermission: "lobbycfg.hungerbypass"
 
 playerMechanics:
   defaultGameMode: adventure
   # (x, y, z, yaw, pitch)
   spawnLocation: 0,81,0,90,0
-
   spawnWorld: world
   deathHeight: 30
 
